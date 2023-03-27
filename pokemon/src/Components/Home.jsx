@@ -12,7 +12,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import { alpha, makeStyles } from "@material-ui/core/styles";
-import { toFirstCharUppercase } from "./constants";
+import { toCharUppercase } from "./constant";
 import SearchIcon from "@material-ui/icons/Search";
 import axios from "axios";
 
@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
   cardContent: {
     textAlign: "center",
+
   },
   searchContainer: {
     display: "flex",
@@ -73,7 +74,7 @@ const Home = (props) => {
       });
   }, []);
 
-  const handleSearchChange = (e) => {
+  const handleSearch = (e) => {
     setFilter(e.target.value);
   };
 
@@ -89,7 +90,7 @@ const Home = (props) => {
             style={{ width: "130px", height: "130px" }}
           />
           <CardContent className={classes.cardContent}>
-            <Typography>{`${id}. ${toFirstCharUppercase(name)}`}</Typography>
+            <Typography>{`${id}. ${toCharUppercase(name)}`}</Typography>
           </CardContent>
         </Card>
       </Grid>
@@ -104,7 +105,7 @@ const Home = (props) => {
             <SearchIcon className={classes.searchIcon} />
             <TextField
               className={classes.searchInput}
-              onChange={handleSearchChange}
+              onChange={handleSearch}
               label="Search"
               variant="standard"
             />

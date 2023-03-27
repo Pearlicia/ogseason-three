@@ -3,7 +3,7 @@ import { Typography, Box, Link, Tabs, CircularProgress, Button } from "@material
 import Tab from '@material-ui/core/Tab';
 import TabPanel from '@material-ui/lab/TabPanel';
 import TabContext from '@material-ui/lab/TabContext';
-import { toFirstCharUppercase } from "./constants";
+import { toCharUppercase } from "./constant";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import axios from "axios";
 import { useParams, useNavigate } from 'react-router-dom';
@@ -41,7 +41,7 @@ const DetailsPage= (props) => {
       <>
         <ArrowBackIcon style={{ marginLeft: "15px", marginTop: "15px" }} variant="contained" onClick={() => navigate("/")} />
         <Typography style={{ marginLeft: "40px" }} variant="h3">
-          {`${id}.`} {toFirstCharUppercase(name)}
+          {`${id}.`} {toCharUppercase(name)}
         </Typography>
       
         <img alt="pokemonImage" style={{ width: "300px", height: "300px" }} src={front_default} />
@@ -106,7 +106,7 @@ const DetailsPage= (props) => {
     <>
       {pokemon === undefined && <CircularProgress />}
       {pokemon !== undefined && pokemon && generatePokemonJSX(pokemon)}
-      {pokemon === false && <Typography> Pokemon not found</Typography>}
+      {pokemon === false && <Typography> No pokemon found</Typography>}
 
       {pokemon !== undefined && (
         <Button style={{ backgroundColor: "lightgreen", marginLeft: "20px" }} variant="contained" onClick={() => navigate("/")}>
