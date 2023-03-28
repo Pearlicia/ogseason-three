@@ -6,3 +6,13 @@ Helpful resources:
 - Amplify CLI documentation: https://docs.amplify.aws/cli
 - More details on this folder & generated files: https://docs.amplify.aws/cli/reference/files
 - Join Amplify's community: https://amplify.aws/community/
+
+
+GraphQL endpoint: https://giils6odwrgt3h5hvpicykdjee.appsync-api.us-east-2.amazonaws.com/graphql
+
+new update
+GraphQL endpoint: https://giils6odwrgt3h5hvpicykdjee.appsync-api.us-east-2.amazonaws.com/graphql
+GraphQL API KEY: da2-kzwft3jdazb4ljzvsltgy67j3y
+
+GraphQL endpoint: https://giils6odwrgt3h5hvpicykdjee.appsync-api.us-east-2.amazonaws.com/graphql
+GraphQL API KEY: da2-kzwft3jdazb4ljzvsltgy67j3y

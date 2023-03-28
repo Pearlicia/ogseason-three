@@ -1,6 +1,41 @@
 {
+  "api": {
+    "yelp": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "yelp943bd456"
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "apiKeyConfig": {
+                "apiKeyExpirationDate": "2023-04-27T17:02:56.295Z",
+                "apiKeyExpirationDays": 30,
+                "description": "no api key"
+              },
+              "authenticationType": "API_KEY"
+            }
+          ],
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authyelp943bd456"
+            }
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
   "auth": {
-    "yelpa230979d": {
+    "yelp943bd456": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
