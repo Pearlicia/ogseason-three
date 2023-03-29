@@ -16,3 +16,6 @@ GraphQL API KEY: da2-kzwft3jdazb4ljzvsltgy67j3y
 
 GraphQL endpoint: https://giils6odwrgt3h5hvpicykdjee.appsync-api.us-east-2.amazonaws.com/graphql
 GraphQL API KEY: da2-kzwft3jdazb4ljzvsltgy67j3y
+
+hosting url:
+https://deve.d1mzcfgi2yxd3n.amplifyapp.com
