@@ -12,13 +12,14 @@ import Row from 'react-bootstrap/Row';
 import Nav  from './Components/Nav';
 
 import awsConfig from './aws-exports';
-import { createRestaurant } from './graphql/mutations';
+import { createRestaurant, deleteRestaurant } from './graphql/mutations';
 import { listRestaurants } from './graphql/queries';
 import { onCreateRestaurant } from './graphql/subscriptions';
 
 Amplify.configure(awsConfig)
 
 type Restaurant = {
+  id: string;
   name: string;
   description: string;
   city: string;
@@ -41,7 +42,12 @@ type Action =
   | {
       type: 'SET_FORM_DATA';
       payload: { [field: string]: string };
-    };
+    }
+  | {
+      type: 'DELETE';
+      payload: string;
+
+  };
 
 
 type SubscriptionEvent<D extends { [key: string]: Restaurant }> = {
@@ -53,6 +59,7 @@ type SubscriptionEvent<D extends { [key: string]: Restaurant }> = {
 const initialState: AppState = {
   restaurants: [],
   formData: {
+    id: '',
     name: '',
     city: '',
     description: '',
@@ -66,6 +73,11 @@ const reducer = (state: AppState, action: Action) => {
       return { ...state, restaurants: [...state.restaurants, action.payload] };
     case 'SET_FORM_DATA':
       return { ...state, formData: { ...state.formData, ...action.payload } };
+    case 'DELETE':
+      const updatedRestaurants = state.restaurants.filter(
+        (restaurant) => restaurant.id !== action.payload
+      );
+      return { ...state, restaurants: updatedRestaurants };
     default:
       return state;
   }
@@ -132,6 +144,21 @@ const App: React.FC = () => {
       payload: { [e.target.name]: e.target.value },
     });
 
+
+  const handleDelete = async (restaurantID: any) =>{
+    await API.graphql({
+      query: deleteRestaurant,
+      variables: {
+        input: {
+          id: restaurantID
+        }
+      }
+    })
+    dispatch({ type: 'DELETE', payload: restaurantID});
+
+
+  }
+
   return (
     <div className="App">
       <Nav />
@@ -189,6 +216,8 @@ const App: React.FC = () => {
                       <td>{restaurant.name}</td>
                       <td>{restaurant.description}</td>
                       <td>{restaurant.city}</td>
+                      <td>
+                        <Button variant="danger" onClick={() => handleDelete(restaurant.id)}>Delete</Button></td>
                     </tr>
                   ))}
                 </tbody>

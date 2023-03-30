@@ -17,9 +17,9 @@ function Nav(){
       }
 
     return (
-        <Navbar collapseOnSelect expand="lg" bg="secondary" variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
             <Container >
-            <Navbar.Brand bg="light" fixed="bottom">Restaurant</Navbar.Brand>
+            <Navbar.Brand bg="light" fixed="bottom">MyRestaurant</Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
                 <Navbar.Text>
