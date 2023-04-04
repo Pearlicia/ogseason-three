@@ -1,25 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import Nav  from './Components/Nav';
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+import {Amplify} from 'aws-amplify';
+import awsConfig from './aws-exports';
+import AllFiles from './Components/AllFiles';
+import UploadFile from './Components/UploadFile';
+import {Container} from "react-bootstrap";
+
+Amplify.configure(awsConfig)
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+    <div>
+        <Nav /> 
+        <Container>
+          <UploadFile />
+          <AllFiles />
+        </Container> 
     </div>
+    
+     
   );
 }
 
-export default App;
+export default withAuthenticator(App);
